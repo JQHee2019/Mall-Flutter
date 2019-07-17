@@ -38,7 +38,7 @@ dependencies:
   provide:
    git: https://github.com/google/flutter-provide.git
   # 图片缓存
-  cached_network_image: ^0.8.0
+  # cached_network_image: ^0.8.0
   flutter_advanced_networkimage: any
   # 设备信息
   device_info : ^0.2.0
@@ -55,6 +55,12 @@ dependencies:
   webview_flutter: ^0.3.9+1
   # 获取设备的cache
   path_provider: ^1.1.2
+  # 系统图片选择和iOS配置权限
+  # <key>NSPhotoLibraryUsageDescription</key>
+  # <string>Example usage description</string>
+  # <key>NSCameraUsageDescription</key>
+  # <string>Example usage description</string>
+  image_picker: ^0.5.0+3
 
 dev_dependencies:
   flutter_test:

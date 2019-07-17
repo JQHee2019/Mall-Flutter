@@ -12,6 +12,7 @@ class MinePage extends StatelessWidget {
   static const double IMAGE_ICON_WIDTH = 30.0;
   static const double ARROW_ICON_WIDTH = 16.0;
 
+  var headerImg = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563344166709&di=ebe7859f4a474f15a7f9d48f2837660a&imgtype=0&src=http%3A%2F%2Fy3.ifengimg.com%2Fa%2F2016_03%2F6154e935f8a0fc6.jpg";
   var titleTextStyle = new TextStyle(fontSize: 16.0);
   var rightArrowIcon = new Image.asset(
     'images/ic_arrow_right.png',
@@ -24,9 +25,10 @@ class MinePage extends StatelessWidget {
    */
   Widget _renderHeader(context) {
     return GestureDetector(
-      onTap: () => {
+      onTap: () {
+        debugPrint('个人资料');
         // 跳转到个人资料页面
-        RouterUtil.routeToUserInfoPage(context)
+        RouterUtil.routeToUserInfoPage(context);
       },
       child: Container(
         height: ScreenUtil().setHeight(300),
@@ -42,7 +44,7 @@ class MinePage extends StatelessWidget {
                     shape: BoxShape.circle,
                     color: Colors.transparent,
                     image: new DecorationImage(
-                        image: new NetworkImage("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563344166709&di=ebe7859f4a474f15a7f9d48f2837660a&imgtype=0&src=http%3A%2F%2Fy3.ifengimg.com%2Fa%2F2016_03%2F6154e935f8a0fc6.jpg"),
+                        image: new NetworkImage(headerImg),
                         fit: BoxFit.cover
                     ),
                     border: new Border.all(color: Colors.white, width: 2.0)
@@ -66,11 +68,11 @@ class MinePage extends StatelessWidget {
    */
   Widget _renderRow(context, title) {
     return InkWell(
-      onTap: () => {
+      onTap: () {
         // 获取本地缓存大小和清除缓存：https://www.jianshu.com/p/04dc696e7b33
         // showLoadingDialog(context),
-        showMyCupertinoDialog(context),
-        debugPrint(title),
+        showMyCupertinoDialog(context);
+        debugPrint(title);
       },
       child: Padding(
         padding: const EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
