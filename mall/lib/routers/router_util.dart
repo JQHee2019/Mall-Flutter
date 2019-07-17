@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mall/pages/user_info_page.dart';
 
 /**
  * 路由 (无需使用fluro)
@@ -7,11 +8,11 @@ import 'package:flutter/material.dart';
 // 更多使用方法参考：https://www.jianshu.com/p/b4fa985a3c8f
 class RouterUtil {
 
-    static void routeToDetailPage(BuildContext context,String id) {
+    static void routeToUserInfoPage(BuildContext context) {
       Navigator.of(context).push(
           MaterialPageRoute(
               builder: (context){
-                return DetailsPage(goodId: id);
+                return UserInfoPage();
               }
           )
       );

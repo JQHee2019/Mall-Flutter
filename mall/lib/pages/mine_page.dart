@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mall/widgets/dialog/loading_dialog.dart';
+import 'package:mall/routers/router_util.dart';
 
 /**
  * 消息中心
@@ -22,34 +23,40 @@ class MinePage extends StatelessWidget {
    * 个人中心头部
    */
   Widget _renderHeader(context) {
-    return Container(
-      height: ScreenUtil().setHeight(300),
-      color: Colors.green,
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,          
-          children: <Widget>[
-          new Container(
-              width: 60.0,
-              height: 60.0,
-              decoration: new BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.transparent,
-                  image: new DecorationImage(
-                      image: new NetworkImage("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563344166709&di=ebe7859f4a474f15a7f9d48f2837660a&imgtype=0&src=http%3A%2F%2Fy3.ifengimg.com%2Fa%2F2016_03%2F6154e935f8a0fc6.jpg"),
-                      fit: BoxFit.cover
-                  ),
-                  border: new Border.all(color: Colors.white, width: 2.0)
-              ),
-          ),
-          new Container(
-            margin: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0),
-            child: new Text(
-              '点击头像登录',
-              style: new TextStyle(color: Colors.white, fontSize: 16.0)
+    return GestureDetector(
+      onTap: () => {
+        // 跳转到个人资料页面
+        RouterUtil.routeToUserInfoPage(context)
+      },
+      child: Container(
+        height: ScreenUtil().setHeight(300),
+        color: Colors.green,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,          
+            children: <Widget>[
+            new Container(
+                width: 60.0,
+                height: 60.0,
+                decoration: new BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.transparent,
+                    image: new DecorationImage(
+                        image: new NetworkImage("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563344166709&di=ebe7859f4a474f15a7f9d48f2837660a&imgtype=0&src=http%3A%2F%2Fy3.ifengimg.com%2Fa%2F2016_03%2F6154e935f8a0fc6.jpg"),
+                        fit: BoxFit.cover
+                    ),
+                    border: new Border.all(color: Colors.white, width: 2.0)
+                ),
             ),
-          ),
-        ]),
+            new Container(
+              margin: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0),
+              child: new Text(
+                '点击头像登录',
+                style: new TextStyle(color: Colors.white, fontSize: 16.0)
+              ),
+            ),
+          ]),
+        ),
       ),
     );
   }
@@ -164,7 +171,7 @@ class MinePage extends StatelessWidget {
               loadingText: '正在获取详情...',
               dismissCallback: () {
                 // 展示相当跳转到一个新的页面
-                Navigator.pop(context); //关闭对话框
+                Navigator.of(context).pop(); //关闭对话框
                 print("dismiss");
               },
           );
@@ -172,7 +179,7 @@ class MinePage extends StatelessWidget {
   }
 
   hideLoadingDialog(context) {
-    // Navigator.pop(context); //关闭对话框
+    // Navigator.of(context).pop(); //关闭对话框
   }
 }
 
