@@ -24,28 +24,25 @@ class MainPage extends StatefulWidget {
 
 class _MainPagePage extends State<MainPage> {
 
-  final List<BottomNavigationBarItem> bottomTabs = [
-    BottomNavigationBarItem(
-      icon: Image.asset("images/tabbar/tabbar_message_n.png"),
-      activeIcon: Image.asset("images/tabbar/tabbar_message_h_b.png"),
-      title: Text('消息')
-    ),
-     BottomNavigationBarItem(
-      icon: Image.asset("images/tabbar/tabbar_function_n.png"),
-      activeIcon: Image.asset("images/tabbar/tabbar_function_h_b.png"),
-      title: Text('功能')
-    ),
-     BottomNavigationBarItem(
-      icon: Image.asset("images/tabbar/tabbar_customerservice_n.png"),
-      activeIcon: Image.asset("images/tabbar/tabbar_customerservice_h_b.png"),
-      title: Text('客服')
-    ),
-     BottomNavigationBarItem(
-      icon: Image.asset("images/tabbar/tabbar_mine_n.png"),
-      activeIcon: Image.asset("images/tabbar/tabbar_mine_h_b.png"),
-      title: Text('我的')
-    ),
-  ];
+  /**
+   * 自定义设置icon大小
+   */
+  Widget _renderIcon(name) {
+    return Container(
+        height: 25,
+        width: 25,
+        child: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Image.asset(name)
+            ],
+          ),
+        ),
+      );
+  }
+
+  List<BottomNavigationBarItem> bottomTabs = [];
 
   final List<Widget> tabBodies = [
     MessagePage(),
@@ -59,6 +56,29 @@ class _MainPagePage extends State<MainPage> {
 
   @override
   void initState() {
+
+    bottomTabs = [
+    BottomNavigationBarItem(
+      icon: _renderIcon("images/tabbar/tabbar_message_n.png"),
+      activeIcon: _renderIcon("images/tabbar/tabbar_message_h_b.png"),
+      title: Text('消息')
+    ),
+     BottomNavigationBarItem(
+      icon: _renderIcon("images/tabbar/tabbar_function_n.png"),
+      activeIcon: _renderIcon("images/tabbar/tabbar_function_h_b.png"),
+      title: Text('功能')
+    ),
+     BottomNavigationBarItem(
+      icon: _renderIcon("images/tabbar/tabbar_customerservice_n.png"),
+      activeIcon: _renderIcon("images/tabbar/tabbar_customerservice_h_b.png"),
+      title: Text('客服')
+    ),
+     BottomNavigationBarItem(
+      icon: _renderIcon("images/tabbar/tabbar_mine_n.png"),
+      activeIcon: _renderIcon("images/tabbar/tabbar_mine_h_b.png"),
+      title: Text('我的')
+    ),
+  ];
     // 默认
     // currentPage = tabBodies[currentIndex];
     super.initState();
@@ -74,7 +94,6 @@ class _MainPagePage extends State<MainPage> {
           backgroundColor: Color.fromRGBO(244, 255, 255, 1),
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
-            iconSize: 15,
             currentIndex: currentIndex,
             items: bottomTabs,
             onTap: (index){
