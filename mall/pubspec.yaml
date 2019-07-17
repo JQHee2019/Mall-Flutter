@@ -53,6 +53,8 @@ dependencies:
   package_info: ^0.4.0+4
   # 网页加载
   webview_flutter: ^0.3.9+1
+  # 获取设备的cache
+  path_provider: ^1.1.2
 
 dev_dependencies:
   flutter_test:

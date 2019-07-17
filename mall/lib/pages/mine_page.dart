@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mall/widgets/dialog/loading_dialog.dart';
 
 /**
  * 消息中心
@@ -58,7 +60,10 @@ class MinePage extends StatelessWidget {
   Widget _renderRow(context, title) {
     return InkWell(
       onTap: () => {
-        debugPrint('cell click')
+        // 获取本地缓存大小和清除缓存：https://www.jianshu.com/p/04dc696e7b33
+        // showLoadingDialog(context),
+        showMyCupertinoDialog(context),
+        debugPrint(title),
       },
       child: Padding(
         padding: const EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
@@ -119,7 +124,56 @@ class MinePage extends StatelessWidget {
     );
   }
 
+  /**
+   * iOS 样式的弹窗
+   */
+  void showMyCupertinoDialog(BuildContext context) {
+    showCupertinoDialog(
+        context: context,
+        builder: (context) {
+          return new CupertinoAlertDialog(
+            title: new Text("title"),
+            content: new Text("内容内容内容内容内容内容内容内容内容内容内容"),
+            actions: <Widget>[
+              new FlatButton(
+                onPressed: () {
+                  Navigator.of(context).pop("点击了确定");
+                },
+                child: new Text("确认"),
+              ),
+              new FlatButton(
+                onPressed: () {
+                  Navigator.of(context).pop("点击了取消");
+                },
+                child: new Text("取消"),
+              ),
+            ],
+          );
+        });
+  }
 
+  /**
+   * 自定义dialog的使用
+   */
+  showLoadingDialog(context) {
+    showDialog<Null>(
+      context: context, //BuildContext对象
+      barrierDismissible: true,
+      builder: (BuildContext context) {
+          return new LoadingDialog( //调用对话框
+              loadingText: '正在获取详情...',
+              dismissCallback: () {
+                // 展示相当跳转到一个新的页面
+                Navigator.pop(context); //关闭对话框
+                print("dismiss");
+              },
+          );
+      });
+  }
+
+  hideLoadingDialog(context) {
+    // Navigator.pop(context); //关闭对话框
+  }
 }
 
 /** 
