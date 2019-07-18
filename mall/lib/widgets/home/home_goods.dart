@@ -18,7 +18,7 @@ class _HomeGoodsState extends State<HomeGoods> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Container(
-      child: Text('广告位'),
+      child: Text('商品列表'),
     );
   }
 
