@@ -7,8 +7,15 @@ import 'package:mall/routers/router_util.dart';
 /**
  * 消息中心
  */
-class MinePage extends StatelessWidget {
+class MinePage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return _MinePageState();
+  }
+}
 
+class _MinePageState extends State<MinePage> {
   static const double IMAGE_ICON_WIDTH = 30.0;
   static const double ARROW_ICON_WIDTH = 16.0;
 
@@ -28,7 +35,7 @@ class MinePage extends StatelessWidget {
       onTap: () {
         debugPrint('个人资料');
         // 跳转到个人资料页面
-        RouterUtil.routeToUserInfoPage(context);
+        RouterUtil.routeToUserInfoAvatarPage(context);
       },
       child: Container(
         height: ScreenUtil().setHeight(300),
@@ -71,8 +78,9 @@ class MinePage extends StatelessWidget {
       onTap: () {
         // 获取本地缓存大小和清除缓存：https://www.jianshu.com/p/04dc696e7b33
         // showLoadingDialog(context),
-        showMyCupertinoDialog(context);
-        debugPrint(title);
+        // showMyCupertinoDialog(context);
+        // debugPrint(title);
+        _handleCellClick(context, title);
       },
       child: Padding(
         padding: const EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
@@ -133,6 +141,17 @@ class MinePage extends StatelessWidget {
     );
   }
 
+  _handleCellClick(context, title) {
+
+    switch (title) {
+      case '设置':
+        RouterUtil.routeToSettingPage(context);
+        break;
+      default: break;
+    }
+
+  }
+
   /**
    * iOS 样式的弹窗
    */
@@ -183,6 +202,7 @@ class MinePage extends StatelessWidget {
   hideLoadingDialog(context) {
     // Navigator.of(context).pop(); //关闭对话框
   }
+
 }
 
 /** 
