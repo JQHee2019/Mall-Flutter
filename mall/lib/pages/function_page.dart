@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 
+// 自定义组件
+import 'package:mall/widgets/home/home_swiper.dart';
+import 'package:mall/widgets/home/home_items.dart';
+import 'package:mall/widgets/home/home_notice.dart';
+import 'package:mall/widgets/home/home_banner.dart';
+import 'package:mall/widgets/home/home_goods.dart';
+
 
 /**
  * 商城首页
@@ -21,7 +28,15 @@ class _FunctionPageState extends State<FunctionPage> with AutomaticKeepAliveClie
     return Scaffold(
       appBar: AppBar(title: Text("首页"),),
       body: Container(
-        child: Text("首页"),
+        child: ListView(
+          children: <Widget>[
+            HomeSwiper(),
+            HomeItems(),
+            HomeNotice(),
+            HomeBanner(),
+            HomeGoods()
+          ],
+        ),
       ),
     );
   }
