@@ -19,7 +19,7 @@ class _HomeItemsState extends State<HomeItems> {
  Widget _swiperBuilder(BuildContext context) {
 
     return Container(
-      child: new ConstrainedBox(
+      child: new ConstrainedBox( // 约束布局 设置某一个范围
         child: new Swiper(
           outer:false,
           itemBuilder: (c, i) {
