@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 // 主入口页面
 import 'package:mall/pages/main_page.dart';
@@ -7,7 +8,14 @@ import 'package:mall/pages/main_page.dart';
 import 'package:provide/provide.dart';
 
 void main() {
+
+  // 修改系统状态栏颜色
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    systemNavigationBarColor: Colors.blue, // navigation bar color
+    statusBarColor: Colors.blue, // status bar color
+  ));
   // var counter = Counter();
+
 
   var providers = Providers();
  
